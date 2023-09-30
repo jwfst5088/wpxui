@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./conf.d:/etc/nginx/conf.d
+      - ./certs:/etc/nginx/certs
+      - ./html:/var/www/html
+      - ./log/nginx:/var/log/nginx
+
+  php:
+    image: php:fpm
+    container_name: php
+    restart: always
+    volumes:
+      - ./html:/var/www/html
+
+  php74:
+    image: php:7.4.33-fpm
+    container_name: php74
+    restart: always
+    volumes:
+      - ./html:/var/www/html
+
+  mysql:
+    image: mysql
+    container_name: mysql
+    restart: always
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: webroot
+      MYSQL_USER: kejilion
+      MYSQL_PASSWORD: kejilionYYDS
+
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+    volumes:
+      - ./redis:/data
+
+  x-ui:
+    image: kejilion/x-ui:latest  # 根据 x-ui 的实际 Docker 镜像名称和版本进行修改
+    container_name: x-ui
+    restart: always
+    ports:
+      - "54321:54321"  # 根据 x-ui 的端口进行修改
+    volumes:
+      - ./x-ui/config.yaml:/etc/x-ui/config.yaml  # 根据 x-ui 的配置文件路径进行修改
+      - ./x-ui/data:/etc/x-ui/data  # 根据 x-ui 的数据目录路径进行修改
+    environment:
+      - XUI_API_KEY=your_api_key  # 根据您的 x-ui API 密钥进行修改
