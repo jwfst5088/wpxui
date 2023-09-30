@@ -53,4 +53,5 @@ services:
     restart: always
     ports:
       - "54321:54321"  # 根据 x-ui 的端口进行修改
-
+    volumes:
+      - ./x-ui:/etc/x-ui
