@@ -14,6 +14,7 @@ services:
       - ./certs:/etc/nginx/certs
       - ./html:/var/www/html
       - ./log/nginx:/var/log/nginx
+      - ./x-ui:/etc/x-ui
 
   php:
     image: php:fpm
@@ -46,4 +47,12 @@ services:
     restart: always
     volumes:
       - ./redis:/data
-
+      
+  x-ui:
+    image: enwaiax/x-ui  # 根据 x-ui 的实际 Docker 镜像名称和版本进行修改
+    container_name: x-ui
+    restart: always
+    ports:
+      - "54321:54321"  # 根据 x-ui 的端口进行修改
+    volumes:
+      - ./x-ui:/etc/x-ui
