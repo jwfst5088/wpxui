@@ -49,7 +49,7 @@ services:
       - ./redis:/data
       
   x-ui:
-    image: malaohu/x-ui  # 根据 x-ui 的实际 Docker 镜像名称和版本进行修改
+    image: johndesu090/x-ui  # 根据 x-ui 的实际 Docker 镜像名称和版本进行修改
     container_name: x-ui
     restart: always
     ports:
