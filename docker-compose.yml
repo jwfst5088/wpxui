@@ -14,7 +14,7 @@ services:
       - ./certs:/etc/nginx/certs
       - ./html:/var/www/html
       - ./log/nginx:/var/log/nginx
-    command: sh -c "chmod -R 755 /var/www/html && nginx -g 'daemon off;'"
+   
 
   php:
     image: php:fpm
@@ -22,7 +22,7 @@ services:
     restart: always
     volumes:
       - ./html:/var/www/html
-    command: sh -c "chmod -R 755 /var/www/html && php-fpm"
+    
 
 
   php74:
@@ -31,7 +31,7 @@ services:
     restart: always
     volumes:
       - ./html:/var/www/html
-    command: sh -c "chmod -R 755 /var/www/html && php-fpm"
+    
 
   mysql:
     image: mysql
