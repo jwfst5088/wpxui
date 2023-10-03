@@ -14,7 +14,8 @@ services:
       - ./certs:/etc/nginx/certs
       - ./html:/var/www/html
       - ./log/nginx:/var/log/nginx
-   
+   depends_on:
+      - php
 
   php:
     image: php:fpm
