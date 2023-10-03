@@ -14,8 +14,6 @@ services:
       - ./certs:/etc/nginx/certs
       - ./html:/var/www/html
       - ./log/nginx:/var/log/nginx
-   depends_on:
-      - php
 
   php:
     image: php:fpm
@@ -24,7 +22,6 @@ services:
     volumes:
       - ./html:/var/www/html
    
-
   php74:
     image: php:7.4.33-fpm
     container_name: php74
@@ -32,7 +29,6 @@ services:
     volumes:
       - ./html:/var/www/html
    
-
   mysql:
     image: mysql
     container_name: mysql
