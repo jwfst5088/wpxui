@@ -3,10 +3,13 @@ services:
   xui:
     image: enwaiax/x-ui
     container_name: xui
+    restart: always
+    network_mode: "host"
     volumes:
-      - $PWD/db/:/etc/x-ui/
-      - $PWD/cert/:/root/cert/
-    restart: unless-stopped
-    network_mode: host
+        - "$PWD/out:/root/out"
+        - "$PWD/generate_cert.sh:/generate_cert.sh"  # 将宿主机上的 generate_cert.sh 脚本映射到容器内部 
+    command:
+        - /bin/bash
+        - /generate_cert.sh  # 执行刚才创建的 generate_cert.sh 脚本 
 
 
