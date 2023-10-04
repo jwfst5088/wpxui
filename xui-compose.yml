@@ -8,4 +8,6 @@ services:
     volumes:
         - "$PWD/out:/root/out"
         - "$PWD/generate_cert.sh:/generate_cert.sh"  
+    command: ["/bin/bash", "/generate_cert.sh"]
+
 
