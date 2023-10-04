@@ -4,9 +4,9 @@ services:
     image: enwaiax/x-ui
     container_name: xui
     volumes:
-      - ./db/:/etc/x-ui/
-      - ./cert/:/root/.acme.sh/ui.cszc.link_ecc/
+      - $PWD/db/:/etc/x-ui/
+      - $PWD/cert/:/root/cert/
     restart: unless-stopped
-    network_mode: host  
+    network_mode: host
 
 
