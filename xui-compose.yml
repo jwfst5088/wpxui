@@ -4,7 +4,7 @@ services:
     image: enwaiax/x-ui
     container_name: xui
     restart: always
-    network_mode: "host"
+    network_mode: host
     volumes:
         - "$PWD/out:/root/out"
         - "$PWD/generate_cert.sh:/generate_cert.sh"  
