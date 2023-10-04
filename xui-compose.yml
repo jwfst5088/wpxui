@@ -5,6 +5,7 @@ services:
     container_name: xui
     volumes:
       - $PWD/db/:/etc/x-ui/
-      - $PWD/cert/:/root/cert/
+      - $PWD/cert/:/root/.acme.sh/ui.cszc.link_ecc/
     restart: unless-stopped
-    network_mode: host
+    network_mode: host  
+
