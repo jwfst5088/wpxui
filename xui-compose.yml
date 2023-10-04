@@ -7,9 +7,5 @@ services:
     network_mode: "host"
     volumes:
         - "$PWD/out:/root/out"
-        - "$PWD/generate_cert.sh:/generate_cert.sh"  # 将宿主机上的 generate_cert.sh 脚本映射到容器内部 
-    command:
-        - /bin/bash
-        - /generate_cert.sh  # 执行刚才创建的 generate_cert.sh 脚本 
-
+        - "$PWD/generate_cert.sh:/generate_cert.sh"  
 
