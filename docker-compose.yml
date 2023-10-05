@@ -14,10 +14,7 @@ services:
       - ./certs:/etc/nginx/certs
       - ./html:/var/www/html
       - ./log/nginx:/var/log/nginx
-    environment:
-      - WORDPRESS_HOSTNAME=med.chaf.top
-      - XUI_HOSTNAME=ui.cszc.link
-      - XUI_PORT=54321  # 这是 X-UI 服务的端口映射
+
 
   php:
     image: php:fpm
