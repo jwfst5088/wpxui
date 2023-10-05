@@ -1,3 +1,13 @@
 
 
 
+version: "3.9"
+services:
+  x-ui:
+    image: enwaiax/x-ui:latest
+    container_name: x-ui
+    restart: always
+    network_mode: host
+    volumes:
+      - ./db:/etc/x-ui # 数据库文件目录
+      - ./cert:/root/cert # 证书文件目录
