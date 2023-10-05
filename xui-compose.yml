@@ -10,5 +10,8 @@ services:
       - $PWD/cert/:/root/cert/
     restart: unless-stopped
     network_mode: host
+    environment:
+      - VIRTUAL_HOST=ui.cszc.link  # 添加一个环境变量，以便 Nginx 识别该域名，并将其反向代理到 X-UI 服务
+      - VIRTUAL_PORT=54321 # 添加一个环境变量，以便 Nginx 知道 X-UI 服务的端口号
 
 
