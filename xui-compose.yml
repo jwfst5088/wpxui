@@ -3,6 +3,8 @@ services:
   xui:
     image: enwaiax/x-ui
     container_name: xui
+    ports:
+      - 54321:54321 
     volumes:
       - $PWD/db/:/etc/x-ui/
       - $PWD/cert/:/root/cert/
