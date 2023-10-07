@@ -28,7 +28,7 @@ services:
       - ./html:/var/www/html
     depends_on:
       - mysql
-   
+
   php74:
     image: php:7.4.33-fpm
     container_name: php74
@@ -37,7 +37,7 @@ services:
       - ./html:/var/www/html
     depends_on:
       - mysql
-   
+
   mysql:
     image: mysql
     container_name: mysql
@@ -63,4 +63,5 @@ services:
     network_mode: host
     volumes:
       - ./db:/etc/x-ui # 数据库文件目录
+
       
