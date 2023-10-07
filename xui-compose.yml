@@ -7,6 +7,6 @@ services:
     network_mode: host
     volumes:
       - ./db:/etc/x-ui # 数据库文件目录
-      - ./cert:/root/cert # 证书文件目录
+      - ./certs:/root/cert # 证书文件目录
 
 
