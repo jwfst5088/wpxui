@@ -1,24 +1,25 @@
-version: '3.8'
+version: '3.9'
 
 services:
+  xui:
+    image: enwaiax/x-ui:latest
+    container_name: xui
+    restart: always
+    network_mode: host
+    volumes:
+      - ./db:/etc/x-ui # 数据库文件目录
+      - ./cert:/root/cert # 证书目录
+
   nginx:
     image: nginx
     container_name: nginx
     restart: always
-    ports:
-      - "80:80"
-      - "443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./conf.d:/etc/nginx/conf.d
       - ./certs:/etc/nginx/certs
       - ./html:/var/www/html
       - ./log/nginx:/var/log/nginx
-    depends_on:
-      - php
-      - php74
-      - mysql
-      - redis
 
   php:
     image: php:fpm
@@ -26,8 +27,6 @@ services:
     restart: always
     volumes:
       - ./html:/var/www/html
-    depends_on:
-      - mysql
 
   php74:
     image: php:7.4.33-fpm
@@ -35,8 +34,6 @@ services:
     restart: always
     volumes:
       - ./html:/var/www/html
-    depends_on:
-      - mysql
 
   mysql:
     image: mysql
@@ -55,7 +52,6 @@ services:
     restart: always
     volumes:
       - ./redis:/data
-
 
 
 
